@@ -1,11 +1,10 @@
 package javaapplication2;
-
 import java.util.*;
 
 public class Petugas{
     private String nama;
     private int id;
-    private List<Gudang> gud = new ArrayList<>();
+    //private List<Gudang> gud = new ArrayList<>();
 	
     public Petugas(int id, String nama){
 	this.id=id;
@@ -24,8 +23,18 @@ public class Petugas{
     public void setId(int id){
     	this.id = id;
     }
-    public Gudang getGudang(int i){
-        Object[] array = gud.toArray();
-        return (Gudang) array[i];
+    /*public void addGudang(Gudang i){
+        gud.add(i);
     }
+    public Gudang getGudang(int i){
+        Gudang x = null;
+            int size = gud.size();
+            for (int j=0; j<size; j++)
+            {
+                if (i==gud.get(j).getId()){
+                    x = gud.get(j);
+                }            
+            }
+            return x;
+    }*/
 }

@@ -23,19 +23,24 @@ public class Penyedia{
     }
     public void setId(int id){
 	this.id = id;
+        
     }
     public void createBarang(Barang i){
-	//b[nBarang] = new Barang(id, nama, jml_barang);
         b.add(i);
-	//nBarang++;
     }
     public Barang getBarang(int i)
     {
-        Object[] array = b.toArray();
-        //if (b.get(i).getId() == i){
+        Barang x = null;
+        int size = b.size();
+        for (int j=0; j<size; j++)
+        {
+            if (i==b.get(j).getId()){
+                x = b.get(j);
+            }            
+        }
+        return x;
+        //Object[] array = b.toArray();
         //return (Barang) array[i];
-        //}
-        return (Barang) array[i];
     }    
     public void showAllBarang(){
 	System.out.println("===Daftar Barang===");
@@ -48,7 +53,15 @@ public class Penyedia{
         }
     }
     public void removeBarang (int i){
-        b.remove(i);
+        Barang x = null;
+        int size = b.size();
+        for (int j=0; j<size; j++)
+        {
+            if (i==b.get(j).getId()){
+                x = b.get(j);
+            }            
+        }
+        b.remove(x);
     }
 	
 }

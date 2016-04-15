@@ -12,10 +12,17 @@ public class Driver {
     public static void main(String[]  args){
         
         Aplikasi app = new Aplikasi();
-        app.addGudang(new Gudang(0,"Buahbatu"));
-        app.addGudang(new Gudang(1,"Sarirejo"));
-        app.addPenyedia(new Penyedia(0,"Firly"));
-        app.addPetugas(new Petugas(0,"Krishajar"));
+        app.addPetugas(new Petugas(1,"Krishajar"));
+        app.addPenyedia(new Penyedia(1,"Firly"));
+        app.addPenyedia(new Penyedia(2,"Udin"));
+        app.getPenyedia(1).createBarang(new Barang(1,"Coklat",11));
+        app.getPenyedia(1).createBarang(new Barang(2,"Keju Craft",5));
+        app.getPenyedia(1).createBarang(new Barang(3,"Susu Bendera",11));
+        app.addGudang(new Gudang(1,"Buahbatu"));
+        app.addGudang(new Gudang(2,"Sarirejo"));
+
+        
+        
         Scanner input = new Scanner(System.in);
         int pilihan = -1;
         while (pilihan != 0)
@@ -32,18 +39,5 @@ public class Driver {
         pilihan = input.nextInt();
         app.mainMenu(pilihan);
         }
-     /*   Penyedia a = new Penyedia(1,"Firly");
-        a.createBarang(new Barang(4,"coklat",12));
-        a.createBarang(new Barang(5,"coklat2",21));
-        a.getBarang(1).getJml_barang();
-        //a.removeBarang(0);
-        System.out.println(a.getBarang(1).getJml_barang());
-        /*a.showAllBarang();
-        Petugas pet = new Petugas(0,"Udink");
-        pet.createGudang(new Gudang(0,"BuahBatu"));
-        pet.createGudang(new Gudang(1,"Cikapundung"));
-        pet.getGudang(0).addBarang(new Barang(3,"sosro",3));
-        //System.out.println(pet.getGudang(0).getBarang(0).getNama());
-        pet.showAllGudang();*/
     }
 }

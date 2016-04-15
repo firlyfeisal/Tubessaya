@@ -18,31 +18,75 @@ public class Aplikasi {
                 daftarGudang.add(i);
         }
 	public Penyedia getPenyedia(int i){
-            Object[] array = daftarPenyedia.toArray();
-            return (Penyedia) array[i];
+            Penyedia x = null;
+            int size = daftarPenyedia.size();
+            for (int j=0; j<size; j++)
+            {
+                if (i==daftarPenyedia.get(j).getId()){
+                    x = daftarPenyedia.get(j);
+                }            
+            }
+            return x;
 	}
 	public Petugas getPetugas(int i){
-            Object[] array = daftarPetugas.toArray();
-            return (Petugas) array[i];
+            Petugas x = null;
+            int size = daftarPetugas.size();
+            for (int j=0; j<size; j++)
+            {
+                if (i==daftarPetugas.get(j).getId()){
+                    x = daftarPetugas.get(j);
+                }            
+            }
+            return x;
 	}
 	public Gudang getGudang(int i){
-            Object[] array = daftarGudang.toArray();
-            return (Gudang) array[i];
+            Gudang x = null;
+            int size = daftarGudang.size();
+            for (int j=0; j<size; j++)
+            {
+                if (i==daftarGudang.get(j).getId()){
+                    x = daftarGudang.get(j);
+                }            
+            }
+            return x;
 	}         
 	public void removePenyedia (int i){
-            daftarPenyedia.remove(i);
+            Penyedia x = null;
+            int size = daftarPenyedia.size();
+            for (int j=0; j<size; j++)
+            {
+                if (i==daftarPenyedia.get(j).getId()){
+                    x = daftarPenyedia.get(j);
+                }            
+            }
+            daftarPenyedia.remove(x);
 	}
 	public void removePetugas (int i){
-            daftarPetugas.remove(i);
+            Petugas x = null;
+            int size = daftarPetugas.size();
+            for (int j=0; j<size; j++)
+            {
+                if (i==daftarPetugas.get(j).getId()){
+                    x = daftarPetugas.get(j);
+                }            
+            }
+            daftarPetugas.remove(x);
 	}
 	public void removeGudang (int i){
-            daftarGudang.remove(i);
+            Gudang x = null;
+            int size = daftarGudang.size();
+            for (int j=0; j<size; j++)
+            {
+                if (i==daftarGudang.get(j).getId()){
+                    x = daftarGudang.get(j);
+                }            
+            }
+            daftarGudang.remove(x);
 	}
         public void showAllPenyedia(){
             int i = 0;
             for (Penyedia obj : daftarPenyedia)
             {           
-                System.out.println("Indeks : "+i);
                 System.out.println("ID : "+obj.getId());
                 System.out.println("Nama : "+obj.getNama());
                 System.out.println("====================================");
@@ -53,7 +97,6 @@ public class Aplikasi {
             int i = 0;
             for (Petugas obj : daftarPetugas)
             {           
-                System.out.println("Indeks : "+i);
                 System.out.println("ID : "+obj.getId());
                 System.out.println("Nama : "+obj.getNama());
                 System.out.println("====================================");
@@ -64,10 +107,17 @@ public class Aplikasi {
             int i = 0;
             for (Gudang obj : daftarGudang)
             {           
-                System.out.println("Indeks : "+i);
                 System.out.println("ID : "+obj.getId());
                 System.out.println("Nama : "+obj.getNama());
                 System.out.println("====================================");
+                i++;
+            }
+        }
+        public void showAllBarang(){
+            int i = 0;
+            for (Penyedia obj1 : daftarPenyedia){
+                System.out.println("Barang dari Penyedia Indeks "+i);
+                obj1.showAllBarang();
                 i++;
             }
         }
@@ -97,7 +147,7 @@ public class Aplikasi {
                         case 3 :
                                 System.out.println("-------------------");
                                 System.out.println("Hapus Penyedia");
-                                System.out.print("Input Indeks Penyedia : ");
+                                System.out.print("Input ID Penyedia : ");
                                 int x2 = input.nextInt();
                                 removePenyedia(x2);
                                 System.out.println("Berhasil");
@@ -105,7 +155,7 @@ public class Aplikasi {
                         case 4 :
                                 System.out.println("-------------------");
                                 System.out.println("Tambah Barang");
-                                System.out.print("Input Indeks Penyedia : ");
+                                System.out.print("Input ID Penyedia : ");
                                 int x3 = input.nextInt();
                                 //getPenyedia(x3);
                                 System.out.println("ID : "+getPenyedia(x3).getId());
@@ -116,14 +166,12 @@ public class Aplikasi {
                                 String z3 = input.next();
                                 System.out.print("Masukan Jumlah Barang : ");
                                 int u3 = input.nextInt();
-                                getPenyedia(x3).createBarang(new Barang(x3,z3,u3));
+                                getPenyedia(x3).createBarang(new Barang(y3,z3,u3));
                                 System.out.println("Berhasil");
                                 break;
                         case 5 :
-                                System.out.println("-------------------");
-                                System.out.print("Input Indeks Penyedia :");
-                                int x = input.nextInt();                             
-                                getPenyedia(x).showAllBarang();
+                                System.out.println("-------------------");                            
+                                showAllBarang();
                                 break;        
                         case 6 :
                                 System.out.println("-------------------");
@@ -143,7 +191,7 @@ public class Aplikasi {
                         case 8 :
                                 System.out.println("-------------------");
                                 System.out.println("Hapus Petugas");
-                                System.out.print("Input Indeks Petugas : ");
+                                System.out.print("Input ID Petugas : ");
                                 int x5 = input.nextInt();
                                 removePetugas(x5);
                                 System.out.println("Berhasil");
@@ -166,27 +214,26 @@ public class Aplikasi {
                         case 11 :
                                 System.out.println("-------------------");
                                 System.out.println("Tambah Barang ke Gudang");
-                                System.out.print("Input Indeks Gudang : ");
+                                //System.out.print("Input ID Petugas : ");
+                                //int q11 = input.nextInt();
+                                //System.out.println("ID : "+getPetugas(q11).getId());
+                                //System.out.println("Nama : "+getPetugas(q11).getNama());
+                                System.out.print("Input ID Gudang : ");
                                 int x11 = input.nextInt();
                                 System.out.println("ID : "+getGudang(x11).getId());
                                 System.out.println("Nama : "+getGudang(x11).getNama());
-                                System.out.print("Input Indeks Penyedia : ");
+                                System.out.print("Input ID Penyedia : ");
                                 int s11 = input.nextInt();
-                                System.out.println("ID : "+getPenyedia(s11).getId());
-                                System.out.println("Nama : "+getPenyedia(s11).getNama());
                                 getPenyedia(s11).showAllBarang();
-                                System.out.print("Input Indeks Barang : ");
+                                System.out.print("Input ID Barang : ");
                                 int t11 = input.nextInt();                                
-                                //System.out.println("ID : "+getPenyedia(s11).getBarang(t11).getId());
-                                //System.out.println("Nama : "+getPenyedia(s11).getBarang(t11).getNama());
-                                //System.out.print("Masukan ID Barang : ");
                                 getGudang(x11).addBarang(new Barang(getPenyedia(s11).getBarang(t11).getId(),getPenyedia(s11).getBarang(t11).getNama(),getPenyedia(s11).getBarang(t11).getJml_barang()));
                                 getPenyedia(s11).removeBarang(t11);
                                 System.out.println("Berhasil dipindahkan ke gudang");                                
                                 break;
                         case 12 :
                                 System.out.println("-------------------");
-                                System.out.print("Input Indeks Gudang : ");
+                                System.out.print("Input ID Gudang : ");
                                 int x10 = input.nextInt();                             
                                 getGudang(x10).showAllBarangGudang();
                                 break;
