@@ -116,7 +116,7 @@ public class Aplikasi {
         public void showAllBarang(){
             int i = 0;
             for (Penyedia obj1 : daftarPenyedia){
-                System.out.println("Barang dari Penyedia Indeks "+i);
+                System.out.println("----Barang dari Penyedia ID "+i+"----");
                 obj1.showAllBarang();
                 i++;
             }
@@ -138,13 +138,7 @@ public class Aplikasi {
                             } catch (Exception e){
                                 System.out.println("Salah Input Masss");
                             }
-                            
                         case 2 :
-                                System.out.println("-------------------");
-                                System.out.println("Data Penyedia");
-                                showAllPenyedia();
-                                break;
-                        case 3 :
                                 System.out.println("-------------------");
                                 System.out.println("Hapus Penyedia");
                                 System.out.print("Input ID Penyedia : ");
@@ -152,12 +146,55 @@ public class Aplikasi {
                                 removePenyedia(x2);
                                 System.out.println("Berhasil");
                                 break;
+                        case 3 :
+                                System.out.println("-------------------");
+                                System.out.println("Data Penyedia");
+                                showAllPenyedia();
+                                break;       
                         case 4 :
+                                System.out.println("-------------------");
+				System.out.println("Tambah Petugas");
+				System.out.print("Input ID : ");
+                                int x6 = input.nextInt();
+                                System.out.print("Input Nama : ");
+                                String y6 = input.next();
+				addPetugas(new Petugas(x6,y6));
+                                System.out.println("Berhasil");
+                                break;
+                        case 5 :
+                                System.out.println("-------------------");
+                                System.out.println("Hapus Petugas");
+                                System.out.print("Input ID Petugas : ");
+                                int x5 = input.nextInt();
+                                removePetugas(x5);
+                                System.out.println("Berhasil");
+                                break;  
+                        case 6 :
+                                System.out.println("-------------------");
+                                System.out.println("Data Petugas");
+                                showAllPetugas();
+                                break;
+                        case 7 :
+                                System.out.println("-------------------");
+				System.out.println("Tambah Gudang");                              
+				System.out.print("Input ID Gudang : ");
+                                int y9 = input.nextInt();
+                                System.out.print("Input Nama Gudang : ");
+                                String z9 = input.next();
+                                addGudang(new Gudang(y9,z9));
+                                System.out.println("Berhasil");
+                                break;                                
+                        case 8 :
+                                System.out.println("-------------------");
+                                System.out.println("Data Gudang");
+                                showAllGudang();
+                                break;
+                                
+                        case 9 :
                                 System.out.println("-------------------");
                                 System.out.println("Tambah Barang");
                                 System.out.print("Input ID Penyedia : ");
                                 int x3 = input.nextInt();
-                                //getPenyedia(x3);
                                 System.out.println("ID : "+getPenyedia(x3).getId());
                                 System.out.println("Nama : "+getPenyedia(x3).getNama());
                                 System.out.print("Masukan ID Barang : ");
@@ -169,55 +206,23 @@ public class Aplikasi {
                                 getPenyedia(x3).createBarang(new Barang(y3,z3,u3));
                                 System.out.println("Berhasil");
                                 break;
-                        case 5 :
+                        case 10 :
+                                System.out.println("-------------------");
+                                System.out.println("Hapus Barang");
+                                System.out.print("Input ID Penyedia : ");
+                                int x15 = input.nextInt();
+                                System.out.print("Input ID Barang : ");
+                                int y15 = input.nextInt();
+                                getPenyedia(x15).removeBarang(y15);
+                                System.out.println("Berhasil");
+                        case 11 :
                                 System.out.println("-------------------");                            
                                 showAllBarang();
                                 break;        
-                        case 6 :
-                                System.out.println("-------------------");
-				System.out.println("Tambah Petugas");
-				System.out.print("Input ID : ");
-                                int x6 = input.nextInt();
-                                System.out.print("Input Nama : ");
-                                String y6 = input.next();
-				addPetugas(new Petugas(x6,y6));
-                                System.out.println("Berhasil");
-                                break;
-                        case 7 :
-                                System.out.println("-------------------");
-                                System.out.println("Data Petugas");
-                                showAllPetugas();
-                                break;
-                        case 8 :
-                                System.out.println("-------------------");
-                                System.out.println("Hapus Petugas");
-                                System.out.print("Input ID Petugas : ");
-                                int x5 = input.nextInt();
-                                removePetugas(x5);
-                                System.out.println("Berhasil");
-                                break;
-                        case 9 :
-                                System.out.println("-------------------");
-				System.out.println("Tambah Gudang");                              
-				System.out.print("Input ID Gudang : ");
-                                int y9 = input.nextInt();
-                                System.out.print("Input Nama Gudang : ");
-                                String z9 = input.next();
-                                addGudang(new Gudang(y9,z9));
-                                System.out.println("Berhasil");
-                                break;                                
-                        case 10 :
-                                System.out.println("-------------------");
-                                System.out.println("Data Gudang");
-                                showAllGudang();
-                                break;                                
-                        case 11 :
+                               
+                        case 12 :
                                 System.out.println("-------------------");
                                 System.out.println("Tambah Barang ke Gudang");
-                                //System.out.print("Input ID Petugas : ");
-                                //int q11 = input.nextInt();
-                                //System.out.println("ID : "+getPetugas(q11).getId());
-                                //System.out.println("Nama : "+getPetugas(q11).getNama());
                                 System.out.print("Input ID Gudang : ");
                                 int x11 = input.nextInt();
                                 System.out.println("ID : "+getGudang(x11).getId());
@@ -231,7 +236,17 @@ public class Aplikasi {
                                 getPenyedia(s11).removeBarang(t11);
                                 System.out.println("Berhasil dipindahkan ke gudang");                                
                                 break;
-                        case 12 :
+                        case 13 :
+                                System.out.println("-------------------");
+                                System.out.println("Hapus Barang di Gudang");
+                                System.out.print("Input ID Gudang : ");
+                                int x16 = input.nextInt();
+                                System.out.print("Input ID Barang : ");
+                                int y16 = input.nextInt();
+                                getGudang(x16).removeBarang(y16);
+                                System.out.println("Berhasil");          
+                                break;
+                        case 14 :
                                 System.out.println("-------------------");
                                 System.out.print("Input ID Gudang : ");
                                 int x10 = input.nextInt();                             

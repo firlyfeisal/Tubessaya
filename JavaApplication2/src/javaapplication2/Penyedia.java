@@ -39,8 +39,6 @@ public class Penyedia{
             }            
         }
         return x;
-        //Object[] array = b.toArray();
-        //return (Barang) array[i];
     }    
     public void showAllBarang(){
 	System.out.println("===Daftar Barang===");

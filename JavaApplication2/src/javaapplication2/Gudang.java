@@ -31,7 +31,15 @@ public class Gudang {
         }
     }	
     public void removeBarang (int i){
-        g.remove(i);
+        Barang x = null;
+        int size = g.size();
+        for (int j=0; j<size; j++)
+        {
+            if (i==g.get(j).getId()){
+                x = g.get(j);
+            }            
+        }
+        g.remove(x);
     }
     public void setNama(String nama){
         this.nama = nama;
